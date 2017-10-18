@@ -6,6 +6,8 @@ class Processor
 {
     protected $validExtensions = ['avi', 'mkv', 'mp4'];
 
+    protected $invalidFileNames = ['sample', 'trailer'];
+
     protected $finders = [];
 
     public function addFinder(FinderInterface $finder)
@@ -53,7 +55,9 @@ class Processor
     protected function isValidFile(\SplFileInfo $fileInfo)
     {
         return in_array($fileInfo->getExtension(), $this->validExtensions)
-            && strtolower($fileInfo->getBasename('.' . $fileInfo->getExtension())) != 'sample';
+            && !in_array(
+                strtolower($fileInfo->getBasename('.' . $fileInfo->getExtension())),
+                $this->invalidFileNames);
     }
 
     protected function markNFFile(\SplFileInfo $fileInfo)
