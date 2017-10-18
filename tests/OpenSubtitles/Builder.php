@@ -2,6 +2,7 @@
 
 namespace Tests\OpenSubtitles;
 
+use Core\Config;
 use PHPUnit\Framework\TestCase;
 use Provider\OpenSubtitles\Builder as OBuilder;
 
@@ -11,7 +12,7 @@ class Builder extends TestCase
 
     protected function setUp()
     {
-        $this->builder = new OBuilder([]);
+        $this->builder = new OBuilder(new Config([]));
     }
 
     public function testFindByHashInterface()
