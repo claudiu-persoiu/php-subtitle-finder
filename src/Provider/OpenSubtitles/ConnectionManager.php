@@ -56,7 +56,7 @@ class ConnectionManager
                 'http' => array(
                     'method'  => "POST",
                     'header'  => "Content-Type: text/xml",
-                    'content' => xmlrpc_encode_request(
+                    'content' => \xmlrpc_encode_request(
                         $method,
                         $data
                     )
@@ -74,13 +74,13 @@ class ConnectionManager
 
     protected function checkResponseForErrors($rawResponse)
     {
-        $response = xmlrpc_decode($rawResponse);
+        $response = \xmlrpc_decode($rawResponse);
 
         if (!$response) {
             throw new \Exception('Invalid XMLRPC result');
         }
 
-        if (xmlrpc_is_fault($response)) {
+        if (\xmlrpc_is_fault($response)) {
             throw new \Exception(sprintf('XMLRPC Fault: %s (%s)', $response['faultString'], $response['faultCode']));
         }
 
