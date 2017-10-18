@@ -18,6 +18,8 @@ Rename **config.ini.sample** to **config.ini**.
 Register at: [https://www.opensubtitles.org/en/newuser](https://www.opensubtitles.org/en/newuser)
 Add the user and password to **config.ini** file from above
 
+NOTE: If you don't want to register leave the name and password fields empty
+
 ## Running
 
 ### As a command line tool

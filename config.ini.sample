@@ -1,6 +1,6 @@
 [open_subtitles]
-username = "user"
-password = "password"
+username = ""
+password = ""
 language = "eng"
 ; see http://trac.opensubtitles.org/projects/opensubtitles/wiki/DevReadFirst
 useragent = "OSTestUserAgentTemp"
