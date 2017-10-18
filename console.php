@@ -19,7 +19,7 @@ if (!$path) {
     throw new \Exception('Path not specified');
 }
 
-$config = \Core\Config::parse('config.ini');
+$config = \Core\Config::parse(__DIR__ . '/config.ini');
 
 $openSubtitlesManager = new \Provider\OpenSubtitles\Builder($config->getOpenSubtitles());
 
