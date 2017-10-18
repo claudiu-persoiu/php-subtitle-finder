@@ -3,10 +3,16 @@
 
 require_once 'vendor/autoload.php';
 
+$path = false;
+
 if (isset($argv[1])) {
     $path = $argv[1];
 } else {
-    $path = getenv('TR_TORRENT_DIR') . "/" . getenv('TR_TORRENT_NAME');
+    $torrentDir = getenv('TR_TORRENT_DIR');
+    $torrentName = getenv('TR_TORRENT_NAME');
+    if ($torrentName) {
+        $path = $torrentDir . '/' . $torrentName;
+    }
 }
 
 if (!$path) {
