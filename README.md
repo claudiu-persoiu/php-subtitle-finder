@@ -24,7 +24,7 @@ NOTE: If you don't want to register leave the name and password fields empty
 
 ### As a command line tool
 ```
-$ ./command path_to_movie
+$ php console.php path_to_movie
 ```
 
 ### Integrate with Transmission Torrent
@@ -47,7 +47,7 @@ Find the lines with:
 and replace with:
 ```
 "script-torrent-done-enabled": true,
-"script-torrent-done-filename": "/path/to/installation/console.php",
+"script-torrent-done-filename": "/usr/bin/env php /path/to/installation/console.php",
 ```
 
 Start the server back:

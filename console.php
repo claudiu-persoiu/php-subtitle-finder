@@ -1,7 +1,6 @@
-#!/usr/bin/env php
 <?php
 
-require_once 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 $path = false;
 
@@ -15,16 +14,24 @@ if (isset($argv[1])) {
     }
 }
 
-if (!$path) {
-    throw new \Exception('Path not specified');
+try {
+
+    if (!$path) {
+        throw new \Exception('Path not specified');
+    }
+
+    $configPath = getcwd() . '/config.ini';
+
+    $config = \Core\Config::parse($configPath);
+
+    $openSubtitlesManager = new \Provider\OpenSubtitles\Builder($config->getOpenSubtitles());
+
+    $obj = new \Core\Processor();
+    $obj->addFinder($openSubtitlesManager->findByHash());
+    $obj->addFinder($openSubtitlesManager->findByName());
+
+    $obj->process($path);
+
+} catch (\Exception $exception) {
+    echo $exception->getMessage() . "\n";
 }
-
-$config = \Core\Config::parse(__DIR__ . '/config.ini');
-
-$openSubtitlesManager = new \Provider\OpenSubtitles\Builder($config->getOpenSubtitles());
-
-$obj = new \Core\Processor();
-$obj->addFinder($openSubtitlesManager->findByHash());
-$obj->addFinder($openSubtitlesManager->findByName());
-
-$obj->process($path);
