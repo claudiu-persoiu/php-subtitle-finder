@@ -7,16 +7,16 @@ The finder can work in two modes, as a command line or integrated with [Transmis
 
 Run the commands below:
 ```
-$ git clone https://github.com/claudiu-persoiu/php-subtitle-finder.git
+$ wget https://github.com/claudiu-persoiu/php-subtitle-finder/raw/storage/subfinder.phar
 
-$ composer install --no-dev
+$ chmod +x subfinder.phar
+
+$ sudo wget https://github.com/claudiu-persoiu/php-subtitle-finder/raw/storage/subfinder.ini -P /etc
 ```
-
-Rename **config.ini.sample** to **config.ini**.
 
 #### Optional
 Register at: [https://www.opensubtitles.org/en/newuser](https://www.opensubtitles.org/en/newuser)
-Add the user and password to **config.ini** file from above
+Add the user and password to **/etc/subfinder.ini** file from above
 
 NOTE: If you don't want to register leave the name and password fields empty
 
@@ -24,7 +24,7 @@ NOTE: If you don't want to register leave the name and password fields empty
 
 ### As a command line tool
 ```
-$ php console.php path_to_movie
+$ ./subfinder.phar path_to_movie
 ```
 
 ### Integrate with Transmission Torrent
@@ -47,7 +47,7 @@ Find the lines with:
 and replace with:
 ```
 "script-torrent-done-enabled": true,
-"script-torrent-done-filename": "/usr/bin/env php /path/to/installation/console.php",
+"script-torrent-done-filename": "/path/to/installation/subfinder.phar",
 ```
 
 Start the server back:
