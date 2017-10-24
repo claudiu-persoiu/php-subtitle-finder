@@ -6,7 +6,7 @@ $phar = new Phar($file, 0, $file);
 
 $phar->startBuffering();
 
-$phar->buildFromDirectory(dirname(__FILE__));
+$phar->buildFromDirectory(dirname(__FILE__), '/\.php$/');
 
 $stub = "#!/usr/bin/env php 
 <?php Phar::mapPhar(''); 

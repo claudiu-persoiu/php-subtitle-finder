@@ -20,7 +20,11 @@ try {
         throw new \Exception('Path not specified');
     }
 
-    $configPath = getcwd() . '/config.ini';
+    $configPath = '/etc/subfinder.ini';
+
+    if (!is_file($configPath)) {
+        throw new \Exception('Config file not found: ' . $configPath);
+    }
 
     $config = \Core\Config::parse($configPath);
 
