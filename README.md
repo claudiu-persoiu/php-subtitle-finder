@@ -7,6 +7,8 @@ The finder can work in two modes, as a command line or integrated with [Transmis
 
 Run the commands below:
 ```
+$ sudo apt install -y php php-xmlrpc
+
 $ wget https://github.com/claudiu-persoiu/php-subtitle-finder/raw/storage/subfinder.phar
 
 $ chmod +x subfinder.phar
